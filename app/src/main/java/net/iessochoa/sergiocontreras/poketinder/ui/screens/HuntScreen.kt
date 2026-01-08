@@ -36,7 +36,7 @@ fun HuntScreen(onNavigateToCapturas: () -> Unit) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        if (pokeBalls > 0 && huidas > 0) {
+        if (pokeBalls > 0) {
             PokemonCard(pokemon = currentPokemon, allowSwipe = false, onLike = swipeRight, onDislike = swipeLeft)
             Spacer(modifier = Modifier.height(16.dp))
             Row {
