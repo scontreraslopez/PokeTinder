@@ -8,13 +8,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import net.iessochoa.sergiocontreras.poketinder.model.Pokemon
 import net.iessochoa.sergiocontreras.poketinder.model.PokemonRepository
 import net.iessochoa.sergiocontreras.poketinder.ui.components.PokemonCard
 
 @Composable
-fun CapturesScreen(capturedPokemon: List<Pokemon>, onBack: () -> Unit) {
+fun CapturesScreen(
+    capturedPokemon: List<Pokemon>, onBack: () -> Unit)
+{
+
+
 
     //Vamos a inventarnos unos captures pokemons para no mostrarlo vacio, ya lo cambiaremos
     // Metemos 3 random pokemons

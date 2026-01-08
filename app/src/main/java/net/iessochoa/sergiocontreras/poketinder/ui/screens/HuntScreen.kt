@@ -11,10 +11,20 @@ import net.iessochoa.sergiocontreras.poketinder.model.PokemonRepository
 import net.iessochoa.sergiocontreras.poketinder.ui.components.PokemonCard
 
 @Composable
-fun HuntScreen(onNavigateToCapturas: () -> Unit) {
-    var currentPokemon by remember { mutableStateOf(PokemonRepository.getRandomPokemon()) }
-    var pokeBalls by remember { mutableStateOf(5) }
-    var huidas by remember { mutableStateOf(2) }
+fun HuntScreen(
+    uiState: HuntScreenUiState,
+    onNavigateToCapturas: () -> Unit
+) {
+
+
+    //var currentPokemon by remember { mutableStateOf(PokemonRepository.getRandomPokemon()) }
+    //var pokeBalls by remember { mutableStateOf(5) }
+    // var huidas by remember { mutableStateOf(2) }
+
+    val currentPokemon = uiState.currentPokemon
+    val pokeBalls = uiState.pokeballsLeft
+    val huidas = uiState.escapesLeft
+
 
     val swipeLeft = {
             if (huidas > 0) {
