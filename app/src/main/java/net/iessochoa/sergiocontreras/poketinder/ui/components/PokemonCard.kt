@@ -18,6 +18,7 @@ import androidx.compose.material3.SwipeToDismissBoxValue
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -37,26 +38,23 @@ import net.iessochoa.sergiocontreras.poketinder.model.Pokemon
 @Composable
 fun PokemonCard(
     pokemon: Pokemon,
-    onLike: (Pokemon) -> Unit,
-    onDislike: (Pokemon) -> Unit,
+    allowSwipe: Boolean = false,
+    onLike: () -> Unit,
+    onDislike: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val dismissState = rememberSwipeToDismissBoxState(
         confirmValueChange = {
             when (it) {
-
-
                 // Este es el swipe de que quiero capturarlo
                 SwipeToDismissBoxValue.StartToEnd -> {
                     //True lo que hace es eliminar la tarjeta. Si es false rebota
-                    onLike(pokemon)
+                    onLike()
                     true
                 }
-
-
                 //Este es el swipe de que quiero huir
                 SwipeToDismissBoxValue.EndToStart -> {
-                    onDislike(pokemon)
+                    onDislike()
                     true
                 }
 
@@ -69,6 +67,8 @@ fun PokemonCard(
     SwipeToDismissBox(
         state = dismissState,
         modifier = modifier,
+        enableDismissFromEndToStart = allowSwipe,
+        enableDismissFromStartToEnd = allowSwipe,
         backgroundContent = {
             val color by animateColorAsState(
                 when (dismissState.targetValue) {
