@@ -15,6 +15,7 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import net.iessochoa.sergiocontreras.poketinder.model.Pokemon
 import net.iessochoa.sergiocontreras.poketinder.model.PokemonRepository
+import net.iessochoa.sergiocontreras.poketinder.ui.components.PokemonCard
 
 @Composable
 fun EncuentrosScreen(onNavigateToCapturas: () -> Unit) {
@@ -60,29 +61,3 @@ fun EncuentrosScreen(onNavigateToCapturas: () -> Unit) {
     }
 }
 
-@Composable
-fun PokemonCard(pokemon: Pokemon) {
-    Card(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
-    ) {
-        Column(
-            modifier = Modifier.padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(pokemon.image)
-                    .crossfade(true)
-                    .build(),
-                //placeholder = painterResource(),
-                contentDescription = pokemon.name,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier.size(150.dp)
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(text = pokemon.name)
-        }
-    }
-}
