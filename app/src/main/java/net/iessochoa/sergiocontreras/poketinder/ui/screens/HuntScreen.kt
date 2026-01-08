@@ -6,18 +6,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import coil3.compose.AsyncImage
-import coil3.request.ImageRequest
-import coil3.request.crossfade
-import net.iessochoa.sergiocontreras.poketinder.model.Pokemon
 import net.iessochoa.sergiocontreras.poketinder.model.PokemonRepository
 import net.iessochoa.sergiocontreras.poketinder.ui.components.PokemonCard
 
 @Composable
-fun EncuentrosScreen(onNavigateToCapturas: () -> Unit) {
+fun HuntScreen(onNavigateToCapturas: () -> Unit) {
     var currentPokemon by remember { mutableStateOf(PokemonRepository.getRandomPokemon()) }
     var pokeBalls by remember { mutableStateOf(5) }
     var huidas by remember { mutableStateOf(2) }

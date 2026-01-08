@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import net.iessochoa.sergiocontreras.poketinder.model.Pokemon
 
 @Composable
-fun CapturasScreen(capturedPokemon: List<Pokemon>, onBack: () -> Unit) {
+fun CapturesScreen(capturedPokemon: List<Pokemon>, onBack: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally

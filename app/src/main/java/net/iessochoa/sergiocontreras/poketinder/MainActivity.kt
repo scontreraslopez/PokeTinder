@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.*
-import net.iessochoa.sergiocontreras.poketinder.ui.screens.CapturasScreen
-import net.iessochoa.sergiocontreras.poketinder.ui.screens.EncuentrosScreen
+import net.iessochoa.sergiocontreras.poketinder.ui.screens.CapturesScreen
+import net.iessochoa.sergiocontreras.poketinder.ui.screens.HuntScreen
 import net.iessochoa.sergiocontreras.poketinder.model.Pokemon
 
 class MainActivity : ComponentActivity() {
@@ -16,10 +16,10 @@ class MainActivity : ComponentActivity() {
             val capturedPokemon = remember { mutableStateListOf<Pokemon>() }
 
             when (currentScreen) {
-                "encuentros" -> EncuentrosScreen(
+                "encuentros" -> HuntScreen(
                     onNavigateToCapturas = { currentScreen = "capturas" }
                 )
-                "capturas" -> CapturasScreen(
+                "capturas" -> CapturesScreen(
                     capturedPokemon = capturedPokemon,
                     onBack = { currentScreen = "encuentros" }
                 )
