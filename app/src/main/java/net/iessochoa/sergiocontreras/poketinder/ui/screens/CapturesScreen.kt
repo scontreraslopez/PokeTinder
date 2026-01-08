@@ -10,9 +10,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import net.iessochoa.sergiocontreras.poketinder.model.Pokemon
+import net.iessochoa.sergiocontreras.poketinder.model.PokemonRepository
 
 @Composable
 fun CapturesScreen(capturedPokemon: List<Pokemon>, onBack: () -> Unit) {
+
+    //Vamos a inventarnos unos captures pokemons para no mostrarlo vacio, ya lo cambiaremos
+    // Metemos 3 random pokemons
+    val capturedPokemon = listOf(
+        PokemonRepository.getRandomPokemon(),
+        PokemonRepository.getRandomPokemon(),
+        PokemonRepository.getRandomPokemon()
+    )
+
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally

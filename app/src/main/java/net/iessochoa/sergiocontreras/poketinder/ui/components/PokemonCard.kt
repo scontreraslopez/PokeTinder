@@ -119,14 +119,12 @@ fun PokemonCard(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(pokemon.image)
-                        .crossfade(true)
-                        .build(),
+                    model = pokemon.image,
                     contentDescription = pokemon.name,
                     contentScale = ContentScale.Crop,
                     modifier = Modifier.size(150.dp)
                 )
+
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(text = pokemon.name)
             }
