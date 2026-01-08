@@ -2,7 +2,6 @@ package net.iessochoa.sergiocontreras.poketinder.ui.screens
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -23,6 +22,21 @@ fun EncuentrosScreen(onNavigateToCapturas: () -> Unit) {
     var pokeBalls by remember { mutableStateOf(5) }
     var huidas by remember { mutableStateOf(2) }
 
+    val swipeLeft = {
+            if (huidas > 0) {
+                huidas--
+                currentPokemon = PokemonRepository.getRandomPokemon()
+            }
+    }
+
+    val swipeRight = {
+        if (pokeBalls > 0) {
+            pokeBalls--
+            // Aquí iría la lógica para capturar
+            currentPokemon = PokemonRepository.getRandomPokemon()
+        }
+    }
+
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
@@ -32,22 +46,11 @@ fun EncuentrosScreen(onNavigateToCapturas: () -> Unit) {
             PokemonCard(pokemon = currentPokemon, {}, {})
             Spacer(modifier = Modifier.height(16.dp))
             Row {
-                Button(onClick = { /* swipe izquierda */
-                    if (huidas > 0) {
-                        huidas--
-                        currentPokemon = PokemonRepository.getRandomPokemon()
-                    }
-                }) {
+                Button(onClick = swipeLeft) {
                     Text(text = "Huir ($huidas)")
                 }
                 Spacer(modifier = Modifier.width(16.dp))
-                Button(onClick = { /* swipe derecha */
-                    if (pokeBalls > 0) {
-                        pokeBalls--
-                        // Aquí iría la lógica para capturar
-                        currentPokemon = PokemonRepository.getRandomPokemon()
-                    }
-                }) {
+                Button(onClick = swipeRight) {
                     Text(text = "Capturar ($pokeBalls)")
                 }
             }
