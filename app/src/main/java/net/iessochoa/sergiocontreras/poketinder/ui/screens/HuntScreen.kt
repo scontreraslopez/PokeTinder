@@ -73,7 +73,7 @@ fun PokemonCard(pokemon: Pokemon) {
         ) {
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
-                    .data("https://example.com/image.jpg")
+                    .data(pokemon.image)
                     .crossfade(true)
                     .build(),
                 //placeholder = painterResource(),
