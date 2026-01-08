@@ -3,26 +3,26 @@ package net.iessochoa.sergiocontreras.poketinder
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import net.iessochoa.sergiocontreras.poketinder.ui.PokeTinderApp
-import net.iessochoa.sergiocontreras.poketinder.ui.theme.PokeTinderTheme
+import androidx.compose.runtime.*
+import net.iessochoa.sergiocontreras.poketinder.ui.screens.CapturasScreen
+import net.iessochoa.sergiocontreras.poketinder.ui.screens.EncuentrosScreen
+import net.iessochoa.sergiocontreras.poketinder.model.Pokemon
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
-            PokeTinderTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    PokeTinderApp(modifier = Modifier.padding(innerPadding))
-                }
+            var currentScreen by remember { mutableStateOf("encuentros") }
+            val capturedPokemon = remember { mutableStateListOf<Pokemon>() }
+
+            when (currentScreen) {
+                "encuentros" -> EncuentrosScreen(
+                    onNavigateToCapturas = { currentScreen = "capturas" }
+                )
+                "capturas" -> CapturasScreen(
+                    capturedPokemon = capturedPokemon,
+                    onBack = { currentScreen = "encuentros" }
+                )
             }
         }
     }
