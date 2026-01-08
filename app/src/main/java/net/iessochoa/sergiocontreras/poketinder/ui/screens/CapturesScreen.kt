@@ -34,7 +34,7 @@ fun CapturesScreen(capturedPokemon: List<Pokemon>, onBack: () -> Unit) {
         }
         LazyColumn {
             items(capturedPokemon) {
-                PokemonCard(pokemon = it, false)
+                PokemonCard(pokemon = it)
             }
         }
     }
