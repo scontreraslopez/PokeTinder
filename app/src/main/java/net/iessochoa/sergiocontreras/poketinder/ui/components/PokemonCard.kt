@@ -38,10 +38,10 @@ import net.iessochoa.sergiocontreras.poketinder.model.Pokemon
 @Composable
 fun PokemonCard(
     pokemon: Pokemon,
+    modifier: Modifier = Modifier,
     allowSwipe: Boolean = false,
-    onLike: () -> Unit,
-    onDislike: () -> Unit,
-    modifier: Modifier = Modifier
+    onLike: () -> Unit = {},
+    onDislike: () -> Unit = {}
 ) {
     val dismissState = rememberSwipeToDismissBoxState(
         confirmValueChange = {

@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import net.iessochoa.sergiocontreras.poketinder.model.Pokemon
 import net.iessochoa.sergiocontreras.poketinder.model.PokemonRepository
+import net.iessochoa.sergiocontreras.poketinder.ui.components.PokemonCard
 
 @Composable
 fun CapturesScreen(capturedPokemon: List<Pokemon>, onBack: () -> Unit) {
@@ -33,7 +34,7 @@ fun CapturesScreen(capturedPokemon: List<Pokemon>, onBack: () -> Unit) {
         }
         LazyColumn {
             items(capturedPokemon) {
-                Text(text = it.name, modifier = Modifier.padding(8.dp))
+                PokemonCard(pokemon = it, false)
             }
         }
     }
